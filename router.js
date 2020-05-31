@@ -16,7 +16,6 @@ router.get("/", (req, res) => {
 })
 
 router.post("/edit", (req, res) => {
-  console.log(req.body)
   userController.findOneAndUpdate({ _id: new mongodb.ObjectID(req.body.id) }, { $set: { name: req.body.name, date: req.body.date, number: req.body.number, email: req.body.email } }, (err, data) => {
     if (err) {
       console.log("something wrong")
@@ -27,7 +26,6 @@ router.post("/edit", (req, res) => {
   })
 })
 router.post("/delete", (req, res) => {
-  console.log(req.body.id)
   userController.deleteOne({ _id: new mongodb.ObjectID(req.body.id) }, (err, data) => {
     res.send("sucessfull")
   })
